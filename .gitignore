@@ -1,0 +1,8 @@
+node_modules/
+dist/
+output/
+*.log
+.history
+*.map
+newman/
+pwad*

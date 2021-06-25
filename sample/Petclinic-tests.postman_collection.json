@@ -1,0 +1,1236 @@
+{
+	"info": {
+		"_postman_id": "651dac9d-7699-45cb-970c-1e0f9a6352ac",
+		"name": "Petclinic tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Homepage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}",
+					"host": [
+						"{{pet_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Домашняя страница",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}",
+					"host": [
+						"{{pet_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/find",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"find"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Smirnov",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners?lastName=Smirnov",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners"
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "Smirnov"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Client page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/new",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Smirnov and symbols in the name 7=zFE96m9%5Kajs_A%RCj9XQYWThEJ_pEt#=QTzZ@uV7z9%SssZHAKx-?bP%aDP5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "firstName=Smirnov&lastName=Ivan&address=pr.Pobedy&city=Tver&telephone=9105663322",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/new",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/10/edit",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"10",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Smirnov правка",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "firstName=Smirnov&lastName=Ivan&address=pr.Pobedy14&city=Tver&telephone=9105663322",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/11/edit",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"11",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New pet page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/10/pets/new",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"10",
+						"pets",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Tuzika",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "id=&name=Tuzik&birthDate=2020-02-20&type=dog",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/10/pets/new",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"10",
+						"pets",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit pet page (Открыли страницу)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/10/pets/12/edit",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"10",
+						"pets",
+						"12",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Tuzika (Обновили ДР на 23-02/2020)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "id=14&name=Tuzik&birthDate=2020-02-23&type=dog",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/10/pets/12/edit",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"10",
+						"pets",
+						"12",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add visit page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/10/pets/12/visits/new",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"10",
+						"pets",
+						"12",
+						"visits",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add visit Tuziky",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "date=2020-11-26&description=Bolit+hvost&petId=14",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/10/pets/12/visits/new",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"10",
+						"pets",
+						"12",
+						"visits",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new visit Tuziky",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "date=2020-11-30&description=Gorychyi+nos&petId=14",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/10/pets/12/visits/new",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"10",
+						"pets",
+						"12",
+						"visits",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Ivan Smirnov",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners?lastName=Ivan",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners"
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "Ivan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners?lastName=",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners"
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select one user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/6",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New pet for this user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "id=&name=Lucky&birthDate=2025-03-03&type=hamster",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owners/6/pets/new",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners",
+						"6",
+						"pets",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vets.html page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/vets.html",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"vets.html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Petclinic error page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/oups",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"oups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Такой страницы вообще нет!!!!",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/owueryweu",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owueryweu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LONG NamE with symbols 7ck@yFM?4M^3p6-25zBAJ6$A6VzVk*e4k8&Pe@xZdWNcZjBkQ4eC-zctv+Cy*7kYeT5M8MH!jbtvjysByvZDeSe4fkWs#4gfQa+kZS&hrw2!CzszkMLeDnKF6mV^Jy_puAvY%yt7rRML_JF&QY35zPXghZn5$jNgxQcu!xZKuAh5w8mPgNK4$sv_JGMUPf7$^v_fgWMMmB3FCJm!qn@%N6x&vWA8tTGf^Tk$ydmY!PR$Dd$DH$g5s?qGxAcrnRG*vVA$4ZRBBH_3tUZ2kj7RTmAum**qzX3PhH&XeBjf6?c9PSk3-GA4hLSS9L-uDr%$=2U-vFE-$+5q_Xg3N?9RSkEz6u6@dfmspPK2??9D!3cn-=22FpGg_cQ6+GrcX#?hrea=P_j2%ewWQAy6p6&b?E+_d&qfmR3$w95L2F#-zH7PPyL2_wYrBKm2b28QXWX6-+9%r859gVzB^2SQbEu6K$Cw=UfmaCn5#SShg8mhpRtJ^jy9MN2QA$wBfJDdFr8u",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{pet_url}}/oups",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"oups"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest({",
+					"    url: \"http://ecse0050029e.epam.com:8090/api/login\",",
+					"    method: 'POST'",
+					"}, function (err, res) {",
+					"    pm.globals.set(\"drill-token\", res.headers.reduce((accumale, cur) => (accumale[cur.key] = cur.value, accumale), {})[\"Authorization\"]);",
+					"    pm.sendRequest({",
+					"        url: \"http://ecse0050029e.epam.com:8090/api/agents/test-pet-multinstances/plugins/test2code/dispatch-action\",",
+					"        method: 'POST',",
+					"        header: {",
+					"            'Accept': 'application/json',",
+					"            \"Authorization\": `Bearer ${pm.globals.get('drill-token')}`,",
+					"            \"Content-Type\": \"application/json\"",
+					"        },",
+					"        body: JSON.stringify({",
+					"            \"type\": \"START\",",
+					"            \"payload\": {",
+					"                \"testType\": \"MANUAL\",",
+					"                \"isGlobal\": true,",
+					"                \"isRealtime\": true,",
+					"                \"sessionId\": \"123\",",
+					"                \"testName\": `[engine:postman]/[class:CollectionName]/[method:${encodeURI(request.name)}]`",
+					"            }",
+					"        })",
+					"    }, function (err, res) {",
+					"        console.log(res)",
+					"        pm.globals.set(\"drill-session-id\", res.id)",
+					"    });",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.sendRequest({",
+					" url: \"http://ecse0050029e.epam.com:8090/api/agents/test-pet-multinstances/plugins/test2code/dispatch-action\", ",
+					" method: 'POST',",
+					" header: {",
+					" 'Accept': 'application/json',",
+					" \"Authorization\": `Bearer ${pm.globals.get('drill-token')}`,",
+					" \"Content-Type\": \"application/json\"",
+					" },",
+					" body: JSON.stringify({",
+					" \"type\": \"STOP\",",
+					" \"payload\": {",
+					" \"sessionId\": \"123\"",
+					" }",
+					" })",
+					" }, function (err, res) {",
+					" console.log(res)",
+					" ",
+					" ",
+					" });"
+				]
+			}
+		}
+	]
+}

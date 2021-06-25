@@ -1,0 +1,514 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Petclinic tests modified",
+		"_postman_id": "53c93b72-b0ba-429f-1fea-52ad0d72e83a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "nested-folder-1",
+			"description": "",
+			"item": [
+				{
+					"name": "deep",
+					"description": "",
+					"item": [
+						{
+							"name": "Homepage",
+							"request": {
+								"url": "{{pet_url}}",
+								"method": "GET",
+								"header": [
+									{
+										"key": "foo",
+										"value": "bar",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Домашняя страница",
+					"request": {
+						"url": "{{pet_url}}",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "nested-folder-2",
+			"description": "",
+			"item": [
+				{
+					"name": "Find page",
+					"request": {
+						"url": "{{pet_url}}/owners/find",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Find Smirnov",
+			"request": {
+				"url": {
+					"raw": "{{pet_url}}/owners?lastName=Smirnov",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners"
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "Smirnov",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Failing with 4XX",
+			"request": {
+				"url": "{{pet_url}}/failing",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Failing with err conn refused",
+			"request": {
+				"url": "localhost:60000",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Failing with assertion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is less than 1ms\"] = responseTime < 1;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{pet_url}}/owners/new",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Passing the assertion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is less than 10 seconds\"] = responseTime < 10000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{pet_url}}/owners/new",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Client page",
+			"request": {
+				"url": "{{pet_url}}/owners/new",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Smirnov and symbols in the name 7=zFE96m9%5Kajs_A%RCj9XQYWThEJ_pEt#=QTzZ@uV7z9%SssZHAKx-?bP%aDP5",
+			"request": {
+				"url": "{{pet_url}}/owners/new",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "firstName=Smirnov&lastName=Ivan&address=pr.Pobedy&city=Tver&telephone=9105663322"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Edit page",
+			"request": {
+				"url": "{{pet_url}}/owners/10/edit",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Smirnov правка",
+			"request": {
+				"url": "{{pet_url}}/owners/11/edit",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "firstName=Smirnov&lastName=Ivan&address=pr.Pobedy14&city=Tver&telephone=9105663322"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add New pet page",
+			"request": {
+				"url": "{{pet_url}}/owners/10/pets/new",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Tuzika",
+			"request": {
+				"url": "{{pet_url}}/owners/10/pets/new",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "id=&name=Tuzik&birthDate=2020-02-20&type=dog"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Edit pet page (Открыли страницу)",
+			"request": {
+				"url": "{{pet_url}}/owners/10/pets/12/edit",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Tuzika (Обновили ДР на 23-02/2020)",
+			"request": {
+				"url": "{{pet_url}}/owners/10/pets/12/edit",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "id=14&name=Tuzik&birthDate=2020-02-23&type=dog"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add visit page",
+			"request": {
+				"url": "{{pet_url}}/owners/10/pets/12/visits/new",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add visit Tuziky",
+			"request": {
+				"url": "{{pet_url}}/owners/10/pets/12/visits/new",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "date=2020-11-26&description=Bolit+hvost&petId=14"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add new visit Tuziky",
+			"request": {
+				"url": "{{pet_url}}/owners/10/pets/12/visits/new",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "date=2020-11-30&description=Gorychyi+nos&petId=14"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Find Ivan Smirnov",
+			"request": {
+				"url": {
+					"raw": "{{pet_url}}/owners?lastName=Ivan",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners"
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "Ivan"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Find all users",
+			"request": {
+				"url": {
+					"raw": "{{pet_url}}/owners?lastName=",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners"
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Select one user",
+			"request": {
+				"url": "{{pet_url}}/owners/6",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add New pet for this user",
+			"request": {
+				"url": "{{pet_url}}/owners/6/pets/new",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "id=&name=Lucky&birthDate=2025-03-03&type=hamster"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "vets.html page",
+			"request": {
+				"url": "{{pet_url}}/vets.html",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Petclinic error page",
+			"request": {
+				"url": "{{pet_url}}/oups",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Такой страницы вообще нет!!!!",
+			"request": {
+				"url": "{{pet_url}}/owueryweu",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LONG NamE with symbols 7ck@yFM?4M^3p6-25zBAJ6$A6VzVk*e4k8&Pe@xZdWNcZjBkQ4eC-zctv+Cy*7kYeT5M8MH!jbtvjysByvZDeSe4fkWs#4gfQa+kZS&hrw2!CzszkMLeDnKF6mV^Jy_puAvY%yt7rRML_JF&QY35zPXghZn5$jNgxQcu!xZKuAh5w8mPgNK4$sv_JGMUPf7$^v_fgWMMmB3FCJm!qn@%N6x&vWA8tTGf^Tk$ydmY!PR$Dd$DH$g5s?qGxAcrnRG*vVA$4ZRBBH_3tUZ2kj7RTmAum**qzX3PhH&XeBjf6?c9PSk3-GA4hLSS9L-uDr%$=2U-vFE-$+5q_Xg3N?9RSkEz6u6@dfmspPK2??9D!3cn-=22FpGg_cQ6+GrcX#?hrea=P_j2%ewWQAy6p6&b?E+_d&qfmR3$w95L2F#-zH7PPyL2_wYrBKm2b28QXWX6-+9%r859gVzB^2SQbEu6K$Cw=UfmaCn5#SShg8mhpRtJ^jy9MN2QA$wBfJDdFr8u",
+			"request": {
+				"url": "{{pet_url}}/oups",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Find Smirnov copy",
+			"request": {
+				"url": {
+					"raw": "{{pet_url}}/owners?lastName=Smirnov",
+					"host": [
+						"{{pet_url}}"
+					],
+					"path": [
+						"owners"
+					],
+					"query": [
+						{
+							"key": "lastName",
+							"value": "Smirnov",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
