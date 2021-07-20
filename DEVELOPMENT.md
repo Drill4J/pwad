@@ -52,26 +52,78 @@
    "type": "module",
 ```
 
-3. Run to make a build for all supported platforms
+3. Run to make a build for all supported platforms (configure with `"pkg"` field in [package.json](./package.json))
 
 ```shell
-  pkg ./dist/index.js
+  pkg .
 ```
 
 4. Or specify a target, e.g. build for Node14 Windows x64
 
 ```shell
-   pkg -t node14-win-x64 ./dist/index.js
+   pkg . -t node14-win-x64 ./dist/index.js
 ```
 
 > Pkg will not resolve dynamic module imports, so avoid these at all costs. (Basically, just use plain ordinary static `import Something from 'somewhere'` and no issue should arise)
 
 > TODO: add `flatted/package.json` patch into npm post-install script
 
-**Q**: Why removing these lines from `flatted/package.json?`
+### Troubleshooting
 
-**A**: Pkg is unable to "understand" that when modules is imported with `require()`, it has to utilize `"main": "./cjs/index.js",` to locate CJS module, instead of using `"module": "./esm/index.js"` field to locate ESM module. `"type": "module"` makes it stumble. Removing it from package.json solves the issue
+1. **Issue - `pkg .` fails with `[ERR_REQUIRE_ESM]`**
 
-**Q**: But why not use Babel?!
+   **Symptom**: error when launching executable:
 
-**A**: Yes, we could use Babel to transpile all dependencies, but that's too much hassle, when the fix is so simple
+   ```shell
+   Error [ERR_REQUIRE_ESM]: Must use import to load ES Module: C:\snapshot\drill-postman\node_modules\flatted\cjs\index.js
+   require() of ES modules is not supported.
+
+   require() of C:\snapshot\drill-postman\node_modules\flatted\cjs\index.js from C:\snapshot\drill-postman\node_modules\uvm\lib\bridge.js is an ES module
+   file as it is a .js file whose nearest parent package.json contains "type": "module" which defines all .js files in that package scope as ES modules.
+   Instead rename index.js to end in .cjs, change the requiring code to use import(), or remove "type": "module" from C:\snapshot\drill-postman\node_modules\flatted\package.json.
+   ```
+
+   **Reason**:
+   Pkg is unable to "understand" that when modules is imported with `require()`, it has to utilize `"main": "./cjs/index.js",` to locate CJS module, instead of using `"module": "./esm/index.js"` field to locate ESM module. `"type": "module"` makes it stumble. Removing it from package.json solves the issue
+
+   **Solution**: remove `"type"` and `"module"` fields from the respective package's `package.json` file
+
+   > example: remove the following fields from the `node_modules/flatted/package.json`
+
+   ```json
+      "module": "./esm/index.js",
+      ...
+      "type": "module",
+   ```
+
+   > Tip: you can add post-install patch script to automate this process
+
+2. **Issue - Dependency or module is not packaged with executable**
+
+   **Symptom**:
+
+   - either obvious module import error, to the likes of `module not found...`
+   - or (in case of missing reporters) warning from newman
+
+   **Reasons(in order)**:
+
+   1. You've forgot to implement/install the module;
+   2. Module is implemented/installed, but is not imported "statically", rather its name is resolved in runtime.
+
+      > example:
+
+      ```javascript
+         function getModule(name) {
+            return require(`path/${name}`)
+         }`
+      ```
+
+   3. Module is installed, but imported by dependency at runtime (basically, the same reason as 2., but more obscure)
+
+   **Solutions**: either
+
+   - Import module "statically", with `import` or `require()` with literal name
+
+     _or (if it is impossible to import module "statically")_
+
+   - Add dependency to `"assets"` field in `"pkg"` params in [package.json](./package.json)
