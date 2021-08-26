@@ -49,6 +49,7 @@ program
   .requiredOption('--drill-admin-url <drill-admin-url>', 'Drill4J admin url backend')
   .option('--drill-agent-id <drill-agent-id>', 'Drill4J agent id')
   .option('--drill-group-id <drill-group-id>', 'Drill4J group id')
+  .option('--test-type <test-type>', 'Custom test type to display in Drill4J Admin Panel')
   .option(
     '--drill-stop-session-delay <drill-stop-session-delay>',
     'delay time in ms - AFTER all requests are finished and BEFORE stopSession signal is sent to Drill4J',
@@ -81,6 +82,7 @@ async function start() {
     drillAgentId,
     drillGroupId,
     drillStopSessionDelay,
+    testType,
   } = options;
 
   console.log('preparing to launch...');
@@ -107,7 +109,7 @@ async function start() {
   console.log('connecting to drill4j...');
   // connect to Drill4J admin
   const admin = await adminConnect(drillAdminUrl, drillAgentId, drillGroupId);
-  const sessionId = await admin.startSession();
+  const sessionId = await admin.startSession(testType);
 
   // TODO make patching collection more clear (generic folders/items traverser with a callback to patch data)
   // e.g. traverse(collection, (item, metadata) => ...)

@@ -9,10 +9,6 @@ export enum AdminMessage {
   ADD_TESTS = 'ADD_TESTS',
 }
 
-export enum TestType {
-  AUTO = 'AUTO',
-}
-
 export enum TestResult {
   PASSED = 'PASSED',
   FAILED = 'FAILED',
@@ -51,13 +47,13 @@ export default async (backendUrl: string, agentId?: string, groupId?: string) =>
   logger.info(`test2code route ${test2CodeRoute}`);
 
   return {
-    async startSession() {
+    async startSession(testType = 'API') {
       const sessionId = uuid();
       await sendSessionAction(test2CodeRoute, {
         type: AdminMessage.START,
         payload: {
           sessionId,
-          testType: TestType.AUTO,
+          testType,
           isRealtime: true,
         },
       });
