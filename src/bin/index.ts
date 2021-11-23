@@ -136,12 +136,25 @@ async function start() {
   // HACK to report time for Drill4J
   const finishTime = Date.now();
   // TODO add response.responseTime to NewmanRunExecution type definition
-  const tests = runSummary.run.executions.map((x: any) => ({
-    name: x.item.name,
-    result: convertToDrillTestStatus(x),
-    startedAt: x.response?.responseTime ? finishTime - x.response?.responseTime : finishTime, //FIXME
-    finishedAt: finishTime,
-  }));
+  const tests: TestInfo[] = runSummary.run.executions.map((x: any) => {
+    const split = (x.item.name as string).split('/'); // FIXME very unreliable if test name contains '/'
+    const testName = split.pop();
+    const path = split.join('/');
+    return {
+      id: x.item.name,
+      name: x.item.name,
+      result: convertToDrillTestStatus(x),
+      startedAt: x.response?.responseTime ? finishTime - x.response?.responseTime : finishTime, //FIXME
+      finishedAt: finishTime,
+      details: {
+        engine: 'postman',
+        path,
+        // params: {}, // TODO TDB
+        // metadata: {},
+        testName,
+      },
+    };
+  });
   await admin.addTests(sessionId, tests);
 
   const delayMs = parseInt(drillStopSessionDelay);

@@ -1,6 +1,6 @@
 {
   "name": "@drill4j/pwad",
-  "version": "0.0.2",
+  "version": "0.0.3-beta.0",
   "description": "PWAD enables Drill4J metrics for Postman collection runs.",
   "main": "dist/index.js",
   "bin": "dist/index.js",

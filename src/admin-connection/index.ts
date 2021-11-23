@@ -17,18 +17,21 @@ export enum TestResult {
   UNKNOWN = 'UNKNOWN',
 }
 
-type TestRun = {
-  name: string;
-  startedAt: number;
-  finishedAt: number;
-  tests: TestInfo[];
-};
-
 export type TestInfo = {
+  id: string;
   name: string;
   result: TestResult;
   startedAt: number;
   finishedAt: number;
+  details: TestDetails;
+};
+
+type TestDetails = {
+  engine?: string;
+  path?: string;
+  testName: string;
+  params?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 };
 
 const logger = LoggerProvider.getLogger('drill', 'admin');
@@ -80,14 +83,9 @@ export default async (backendUrl: string, agentId?: string, groupId?: string) =>
       logger.debug('add tests started at', startedAt);
       logger.debug('add tests finished at', finishedAt);
 
-      const payload: { sessionId: string; testRun: TestRun } = {
+      const payload: { sessionId: string; tests: TestInfo[] } = {
         sessionId,
-        testRun: {
-          name: '',
-          startedAt,
-          finishedAt,
-          tests,
-        },
+        tests,
       };
       await sendSessionAction(test2CodeRoute, {
         type: AdminMessage.ADD_TESTS,
@@ -116,7 +114,8 @@ function getTest2CodeApiRoute(agentId, groupId) {
 function ensureProtocol(url: string) {
   const hasProtocol = url.indexOf('http') > -1 || url.indexOf('https') > -1;
   if (!hasProtocol) {
-    return `http://${url}`;
+    throw new Error(`@drill4j/js-auto-test-agent: protocol is required: provide either http:// or https://\n\tGot url: ${url}`);
+    // return `http://${url}`;
   }
   return url;
 }
