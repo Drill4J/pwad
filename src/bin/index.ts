@@ -55,6 +55,12 @@ program
     'delay time in ms - AFTER all requests are finished and BEFORE stopSession signal is sent to Drill4J',
     '0',
   )
+  .option(
+    '--test-name-delimiter <test-name-delimiter>',
+    'Internal delimiter. Should _not_ be used in test names/paths. Default: \\u2980 - ⦀ - Triple Vertical Bar Delimiter)',
+    '\u2980',
+  )
+  .option('--test-engine-name <test-engine-name>', 'Name passed to Drill4J API "engine" field. Default: Postman', 'Postman')
   .option('--reporters <reporters>', 'comma-separated list of reporters. Available: html, json, junit')
   .option(
     '--newman-config-path <newman-config-path>',
@@ -137,17 +143,18 @@ async function start() {
   const finishTime = Date.now();
   // TODO add response.responseTime to NewmanRunExecution type definition
   const tests: TestInfo[] = runSummary.run.executions.map((x: any) => {
-    const split = (x.item.name as string).split('/'); // FIXME very unreliable if test name contains '/'
+    const split = (x.item.name as string).split(options.testNameDelimiter);
     const testName = split.pop();
     const path = split.join('/');
+    const name = replaceDelimiterCharacters(x.item.name);
     return {
-      id: x.item.name,
-      name: x.item.name,
+      id: name, // TODO - build a unique hash from the request object // BLOCKED - backend API send id in headers fix
+      name, // will be DEPRECATED in future test2code API versions
       result: convertToDrillTestStatus(x),
       startedAt: x.response?.responseTime ? finishTime - x.response?.responseTime : finishTime, //FIXME
       finishedAt: finishTime,
       details: {
-        engine: 'postman',
+        engine: options.testEngineName,
         path,
         // params: {}, // TODO TDB
         // metadata: {},
@@ -169,6 +176,10 @@ async function start() {
 
 async function sleep(ms) {
   return new Promise(res => setTimeout(res, ms));
+}
+
+function replaceDelimiterCharacters(str) {
+  return str.replace(RegExp(options.testNameDelimiter, 'g'), '/');
 }
 
 function convertToDrillTestStatus(execution: any): TestResult {
@@ -217,11 +228,11 @@ function traverseChild(current, parentNameChain) {
   const children = current?.item;
   const isFolder = Array.isArray(children);
   if (isFolder) {
-    children.forEach(child => traverseChild(child, parentNameChain + '/' + current.name));
+    children.forEach(child => traverseChild(child, parentNameChain + options.testNameDelimiter + current.name));
     return;
   }
   if (!parentNameChain) return;
-  current.name = parentNameChain + '/' + current.name;
+  current.name = parentNameChain + options.testNameDelimiter + current.name;
 }
 
 // NOTE: must be called AFTER requests names are patched
@@ -245,7 +256,7 @@ function traverseChild2(current, sessionId) {
   });
   current.request.header.push({
     key: DRILL_HEADER_TEST_NAME,
-    value: encodeURIComponent(current.name),
+    value: encodeURIComponent(replaceDelimiterCharacters(current.name)),
     description: '',
   });
 }
